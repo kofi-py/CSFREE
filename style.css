@@ -1,0 +1,53 @@
+/*
+ * Bootstrap 5.3 Dark Mode Customizations
+ * Note: Most dark theme styles are handled by data-bs-theme="dark" in the HTML.
+ */
+
+:root {
+    /* Define a strong success color for the dark theme */
+    --bs-success-dark-mode: #198754; /* Default Bootstrap success */
+    --bs-success-complete: #4CAF50; /* A brighter green for completion */
+    --bs-secondary-subtle: #1f2327; /* Darker card background for contrast in dark mode */
+}
+
+/* 1. Ensure course items have a subtle smooth transition */
+.course-item {
+    transition: background-color 0.4s ease, opacity 0.4s ease, transform 0.3s ease; /* Added transform for hover effects */
+    border: 1px solid var(--bs-secondary-border); /* Consistent border color */
+}
+
+/* Optional: Slight hover effect for interactivity */
+.course-item:hover:not(.completed) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 2. Styling for Completed Course State */
+.course-item.completed {
+    background-color: #0d3b1f !important; /* Very dark green background */
+    border-color: var(--bs-success-complete) !important;
+    opacity: 0.8;
+}
+
+/* Adjust text color within the completed card for readability */
+.course-item.completed .text-light,
+.course-item.completed .text-primary {
+    color: #a3e6b3 !important; /* Lighter text for contrast on dark green */
+}
+
+/* 3. Style the Completed button */
+.course-item.completed .complete-btn {
+    background-color: var(--bs-success-complete) !important;
+    color: white !important;
+    border-color: var(--bs-success-complete) !important;
+}
+
+/* 4. Tweak the Accordion button appearance */
+.accordion-button.bg-dark {
+    box-shadow: none !important;
+}
+
+/* Ensure the text within the course cards is highly visible */
+.card-text {
+    color: var(--bs-gray-400) !important;
+}

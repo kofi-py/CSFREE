@@ -4,7 +4,7 @@
 git add .
 
 # Step 2: commit with a message
-git commit -m "update support page — removed tutoring references"
+git commit -m "update support page — updated support wording"
 
 # Step 3: push to main branch (change 'main' if your branch is different)
 git push origin main

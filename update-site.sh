@@ -10,3 +10,7 @@ git commit -m "update support page — removed tutoring references"
 git push origin main
 
 echo "✅ Changes pushed! Your GitHub Pages site should update in a few minutes."
+sleep 5
+# Step 4: open your live GitHub Pages site
+# replace with your actual GitHub Pages URL
+xdg-open "https://topproj.github.io/CSFREE/support.html" 2>/dev/null || open "https://topproj.github.io/CSFREE/support.html"

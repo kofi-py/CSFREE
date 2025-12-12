@@ -1,0 +1,19 @@
+.question-box,
+.answer-box {
+  background: #111;
+  border: 1px solid #333;
+  padding: 20px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.answer-author {
+  font-size: 0.85rem;
+  color: #0dcaf0;
+  margin-bottom: 6px;
+}
+
+.answer-body {
+  color: #ccc;
+  font-size: 0.95rem;
+}

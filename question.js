@@ -66,4 +66,16 @@ document.getElementById("submit-answer").onclick = () => {
 
 }
 
+function revealStaggered() {
+  const items = document.querySelectorAll(
+    ".question-box, .answer-box, .answer-form"
+  );
+
+  items.forEach((el, i) => {
+    setTimeout(() => el.classList.add("visible"), i * 120);
+  });
+}
+
+
 loadPage();
+revealStaggered();

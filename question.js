@@ -10,11 +10,38 @@ async function loadPage() {
   const questionContainer = document.getElementById("question-container");
   questionContainer.innerHTML = `
     <div class="question-box">
-      <h2 class="h4 text-primary">${question.title}</h2>
-      <p class="text-light">${question.body}</p>
-      <p class="text-secondary small">tags: ${question.tags}</p>
+      <div class="d-flex justify-content-between align-items-start">
+        <div class="flex-grow-1">
+            <h2 class="h4 text-primary">${question.title}</h2>
+            <p class="text-light">${question.body}</p>
+            <p class="text-secondary small">tags: ${question.tags}</p>
+        </div>
+        <div class="text-center ms-3">
+            <button id="vote-btn-detail" class="btn btn-sm btn-outline-primary vote-btn">
+                ▲
+            </button>
+            <div class="question-votes mt-1" id="vote-count-detail">${question.votes ?? 0}</div>
+        </div>
+      </div>
     </div>
   `;
+
+  document.getElementById("vote-btn-detail").onclick = () => voteQuestionDetail(id, question.votes ?? 0);
+
+  async function voteQuestionDetail(id, currentVotes) {
+    const newVotes = currentVotes + 1;
+    const res = await fetch(`http://localhost:3000/api/questions/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ votes: newVotes })
+    });
+
+    if (res.ok) {
+      document.getElementById("vote-count-detail").textContent = newVotes;
+      const btn = document.getElementById("vote-btn-detail");
+      btn.onclick = () => voteQuestionDetail(id, newVotes);
+    }
+  }
 
   // 2️⃣ LOAD ANSWERS
   const aRes = await fetch(
